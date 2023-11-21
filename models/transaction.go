@@ -11,8 +11,8 @@ type Transaction struct {
 	ID                primitive.ObjectID `bson:"_id,omitempty" json:"id"`
 	Created           time.Time          `bson:"created,omitempty" json:"created"`
 	Modified          time.Time          `bson:"modified,omitempty" json:"modified"`
-	Status            Status             `bson:"status,omitempty" json:"status"`
-	TransactionType   TransactionType    `bson:"transactiontype,omitempty" json:"transactiontype"`
+	Status            string             `bson:"status,omitempty" json:"status"`
+	TransactionType   string             `bson:"transactiontype,omitempty" json:"transactiontype"`
 	SourceAccount     Account            `bson:"sourceaccount,omitempty" json:"sourceaccount"`
 	SignerAccounts    []Account          `bson:"signeraccounts,omitempty" json:"signeraccounts,omitempty"`
 	Maxtime           string             `bson:"maxtime,omitempty" json:"maxtime"`

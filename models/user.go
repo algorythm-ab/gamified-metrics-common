@@ -11,8 +11,8 @@ type User struct {
 	ID       primitive.ObjectID `bson:"_id,omitempty" json:"id"`
 	Created  time.Time          `bson:"created,omitempty" json:"created"`
 	Modified time.Time          `bson:"modified,omitempty" json:"modified"`
-	Status   Status             `bson:"status,omitempty" json:"status"`
-	UserType UserType           `bson:"usertype,omitempty" json:"usertype"`
+	Status   string             `bson:"status,omitempty" json:"status"`
+	UserType string             `bson:"usertype,omitempty" json:"usertype"`
 	Accounts []Account          `bson:"accounts,omitempty" json:"accounts,omitempty"`
 	Name     string             `validate:"required" bson:"name,omitempty" json:"name"`
 	Email    string             `validate:"required,email" bson:"email,omitempty" json:"email"`

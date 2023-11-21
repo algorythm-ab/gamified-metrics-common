@@ -12,8 +12,8 @@ type Account struct {
 	User_ID     primitive.ObjectID `bson:"user_id,omitempty" json:"user_id"`
 	Created     time.Time          `bson:"created,omitempty" json:"created"`
 	Modified    time.Time          `bson:"modified,omitempty" json:"modified"`
-	Status      Status             `bson:"status,omitempty" json:"status"`
-	AccountType AccountType        `bson:"accounttype,omitempty" json:"accounttype"`
+	Status      string             `bson:"status,omitempty" json:"status"`
+	AccountType string             `bson:"accounttype,omitempty" json:"accounttype"`
 	Name        string             `validate:"required" bson:"name,omitempty" json:"name"`
 	Public      string             `valid:"required,min=56,max=56" bson:"public" json:"public"`
 	Secret      string             `valid:"required,min=56,max=56" bson:"secret" json:"secret"`

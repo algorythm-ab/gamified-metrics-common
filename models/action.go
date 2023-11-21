@@ -12,7 +12,7 @@ type Action struct {
 	Created  time.Time          `bson:"created,omitempty" json:"created"`
 	Modified time.Time          `bson:"modified,omitempty" json:"modified"`
 	Deadline time.Time          `bson:"deadline,omitempty" json:"deadline"`
-	Status   Status             `bson:"status,omitempty" json:"status"`
+	Status   string             `bson:"status,omitempty" json:"status"`
 	Asset    Asset              `bson:"asset,omitempty" json:"asset"`
 	User     User               `bson:"user,omitempty" json:"user"`
 	Events   []Event            `bson:"events,omitempty" json:"events"`

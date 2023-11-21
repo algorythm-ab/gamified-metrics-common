@@ -11,8 +11,8 @@ type Asset struct {
 	ID                 primitive.ObjectID `bson:"_id,omitempty" json:"id,omitempty"`
 	Created            time.Time          `bson:"created,omitempty" json:"created,omitempty"`
 	Modified           time.Time          `bson:"modified,omitempty" json:"modified,omitempty"`
-	Status             Status             `bson:"status,omitempty" json:"status,omitempty"`
-	AssetType          AssetType          `bson:"assettype,omitempty" json:"assettype,omitempty"`
+	Status             string             `bson:"status,omitempty" json:"status,omitempty"`
+	AssetType          string             `bson:"assettype,omitempty" json:"assettype,omitempty"`
 	IssuerAccount      Account            `bson:"issueraccount,omitempty" json:"issueraccount,omitempty"`
 	DistributorAccount Account            `bson:"distributoraccount,omitempty" json:"distributoraccount,omitempty"`
 	Name               string             `validate:"required" bson:"name,omitempty" json:"name,omitempty"`
