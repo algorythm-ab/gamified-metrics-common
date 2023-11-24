@@ -9,7 +9,6 @@ import (
 // Account model
 type Account struct {
 	ID          primitive.ObjectID `bson:"_id,omitempty" json:"id"`
-	User_ID     primitive.ObjectID `bson:"user_id,omitempty" json:"user_id"`
 	Created     time.Time          `bson:"created,omitempty" json:"created"`
 	Modified    time.Time          `bson:"modified,omitempty" json:"modified"`
 	Status      string             `bson:"status,omitempty" json:"status"`
