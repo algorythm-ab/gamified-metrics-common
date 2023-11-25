@@ -47,8 +47,8 @@ type PaymentObject struct {
 // SignObject - used to handle json input
 type SignObject struct {
 	StatusObject
-	Transaction   string  `json:"transaction,omitempty"`
-	SignerAccount Account `json:"signeraccount,omitempty"`
+	Transaction   Transaction `json:"transaction,omitempty"`
+	SignerAccount Account     `json:"signeraccount,omitempty"`
 }
 
 // TransObject - used to handle json input
