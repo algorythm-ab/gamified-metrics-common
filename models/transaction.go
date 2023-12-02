@@ -12,6 +12,7 @@ type Transaction struct {
 	Created           time.Time          `bson:"created,omitempty" json:"created"`
 	Modified          time.Time          `bson:"modified,omitempty" json:"modified"`
 	Status            string             `bson:"status,omitempty" json:"status"`
+	TransactionStatus string             `bson:"transactiontype,omitempty" json:"transactionstatus"`
 	TransactionType   string             `bson:"transactiontype,omitempty" json:"transactiontype"`
 	SourceAccount     Account            `bson:"sourceaccount,omitempty" json:"sourceaccount"`
 	SignerAccounts    []Account          `bson:"signeraccounts,omitempty" json:"signeraccounts,omitempty"`
@@ -41,10 +42,38 @@ var TransactionTypes = []TransactionType{
 	{SetTrust, "settrust", "settrust"},
 }
 
-func (e *UserType) GetTransactionType() string {
+func (e *TransactionType) GetTransactionType() string {
 	return e.Name
 }
 
 func (c TransactionTypeId) GetTransactionType() string {
 	return TransactionTypes[int(c)].Name
+}
+
+type TransactionStatusId int
+
+const (
+	Initialized TransactionStatusId = iota
+	Ongoing
+	Done
+)
+
+type TransactionStatus struct {
+	TransactionStatusId `json:"transactionstatusid"`
+	Name                string `json:"name"`
+	Value               string `json:"value"`
+}
+
+var TransactionStatuses = []TransactionStatus{
+	{Initialized, "initialized", "initialized"},
+	{Ongoing, "ongoing", "ongoing"},
+	{Done, "done", "done"},
+}
+
+func (e *TransactionStatus) GetTransactionStatus() string {
+	return e.Name
+}
+
+func (c TransactionStatusId) GetTransactionStatus() string {
+	return TransactionStatuses[int(c)].Name
 }

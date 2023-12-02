@@ -17,9 +17,12 @@ type ReturnObject struct {
 
 // Count - Model for Count
 type Count struct {
-	Total int `json:"total"`
-	Page  int `json:"page"`
-	Limit int `json:"limit"`
+	Total           int    `json:"total"`
+	Page            int    `json:"page"`
+	Limit           int    `json:"limit"`
+	SelfPagingToken string `json:"selfpagingtoken"`
+	PrevPagingToken string `json:"prevpagingtoken"`
+	NextPagingToken string `json:"nextpagingtoken"`
 }
 
 // Links - Model for Links
