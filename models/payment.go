@@ -9,7 +9,7 @@ import (
 type StatusObject struct {
 	Description string `json:"description,omitempty"`
 	Success     bool   `json:"success,omitempty"`
-	Error       error  `json:"error,omitempty"`
+	Error       string `json:"error,omitempty"`
 }
 
 // SetTrustObject - used to handle json input
