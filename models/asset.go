@@ -13,8 +13,8 @@ type Asset struct {
 	Modified           time.Time          `bson:"modified,omitempty" json:"modified,omitempty"`
 	Status             string             `bson:"status,omitempty" json:"status,omitempty"`
 	AssetType          string             `bson:"assettype,omitempty" json:"assettype,omitempty"`
-	IssuerAccount      Account            `bson:"issueraccount,omitempty" json:"issueraccount,omitempty"`
-	DistributorAccount Account            `bson:"distributoraccount,omitempty" json:"distributoraccount,omitempty"`
+	IssuerAccount      *Account           `bson:"issueraccount,omitempty" json:"issueraccount,omitempty"`
+	DistributorAccount *Account           `bson:"distributoraccount,omitempty" json:"distributoraccount,omitempty"`
 	Name               string             `validate:"required" bson:"name,omitempty" json:"name,omitempty"`
 	Abbr               string             `valid:"required,min=3,max=12" bson:"abbr,omitempty" json:"abbr,omitempty"`
 	Public             string             `valid:"required,min=56,max=56" bson:"public,omitempty" json:"public,omitempty"`
