@@ -63,3 +63,13 @@ type TransObject struct {
 	TransactionWeight int                `json:"transactionweight"`
 	CurrentWeight     int                `json:"currentweight"`
 }
+
+// OfferObject - used to handle json input
+type OfferObject struct {
+	StatusObject
+	Seller  Account `json:"seller"`
+	Selling Asset   `json:"selling"`
+	Buying  Asset   `json:"buying"`
+	Amount  string  `json:"amount"`
+	Price   string  `json:"price"`
+}
