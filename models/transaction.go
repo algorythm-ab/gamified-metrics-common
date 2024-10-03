@@ -12,7 +12,7 @@ type Transaction struct {
 	Created           time.Time          `bson:"created,omitempty" json:"created"`
 	Modified          time.Time          `bson:"modified,omitempty" json:"modified"`
 	Status            string             `bson:"status,omitempty" json:"status"`
-	TransactionStatus string             `bson:"transactiontype,omitempty" json:"transactionstatus"`
+	TransactionStatus string             `bson:"transactionstatus,omitempty" json:"transactionstatus"`
 	TransactionType   string             `bson:"transactiontype,omitempty" json:"transactiontype"`
 	SourceAccount     Account            `bson:"sourceaccount,omitempty" json:"sourceaccount"`
 	SignerAccounts    []Account          `bson:"signeraccounts,omitempty" json:"signeraccounts,omitempty"`
