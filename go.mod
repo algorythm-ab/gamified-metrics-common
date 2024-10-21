@@ -7,10 +7,18 @@ require (
 	go.mongodb.org/mongo-driver v1.17.1
 )
 
-require go.uber.org/multierr v1.11.0 // indirect
+require (
+	github.com/go-resty/resty/v2 v2.15.3 // indirect
+	github.com/golang-jwt/jwt/v5 v5.2.1 // indirect
+	github.com/opentracing/opentracing-go v1.2.0 // indirect
+	github.com/pkg/errors v0.9.1 // indirect
+	github.com/segmentio/ksuid v1.0.4 // indirect
+	go.uber.org/multierr v1.11.0 // indirect
+)
 
 require (
-	github.com/gabriel-vasile/mimetype v1.4.5 // indirect
+	github.com/Nerzal/gocloak/v13 v13.9.0
+	github.com/gabriel-vasile/mimetype v1.4.6 // indirect
 	github.com/go-playground/locales v0.14.1 // indirect
 	github.com/go-playground/universal-translator v0.18.1 // indirect
 	github.com/golang/snappy v0.0.4 // indirect
