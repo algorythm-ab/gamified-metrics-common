@@ -8,15 +8,17 @@ import (
 
 // User model
 type User struct {
-	ID       primitive.ObjectID `bson:"_id,omitempty" json:"id"`
-	Created  time.Time          `bson:"created,omitempty" json:"created"`
-	Modified time.Time          `bson:"modified,omitempty" json:"modified"`
-	Status   string             `bson:"status,omitempty" json:"status"`
-	UserType string             `bson:"usertype,omitempty" json:"usertype"`
-	Accounts []Account          `bson:"accounts,omitempty" json:"accounts,omitempty"`
-	Name     string             `validate:"required" bson:"name,omitempty" json:"name"`
-	Email    string             `validate:"required,email" bson:"email,omitempty" json:"email"`
-	Note     string             `bson:"note,omitempty" json:"note"`
+	ID        primitive.ObjectID `bson:"_id,omitempty" json:"id"`
+	Created   time.Time          `bson:"created,omitempty" json:"created"`
+	Modified  time.Time          `bson:"modified,omitempty" json:"modified"`
+	Status    string             `bson:"status,omitempty" json:"status"`
+	UserType  string             `bson:"usertype,omitempty" json:"usertype"`
+	Accounts  []Account          `bson:"accounts,omitempty" json:"accounts,omitempty"`
+	FirstName string             `validate:"required" bson:"firstname,omitempty" json:"firstname"`
+	LastName  string             `validate:"required" bson:"lastname,omitempty" json:"lastname"`
+	Name      string             `validate:"required" bson:"name,omitempty" json:"name"`
+	Email     string             `validate:"required,email" bson:"email,omitempty" json:"email"`
+	Note      string             `bson:"note,omitempty" json:"note"`
 }
 
 type UserTypeId int
