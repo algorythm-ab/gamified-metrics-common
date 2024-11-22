@@ -1,12 +1,15 @@
 package models
 
+import "go.mongodb.org/mongo-driver/bson/primitive"
+
 // Account model
 type Account struct {
-	Status      string `bson:"status,omitempty" json:"status,omitempty"`
-	AccountType string `bson:"accounttype,omitempty" json:"accounttype,omitempty"`
-	Name        string `validate:"required" bson:"name,omitempty" json:"name,omitempty"`
-	Public      string `valid:"required,min=56,max=56" bson:"public" json:"public,omitempty"`
-	Secret      string `valid:"required,min=56,max=56" bson:"secret" json:"secret,omitempty"`
+	ID          primitive.ObjectID `bson:"_id,omitempty" json:"id"`
+	Status      string             `bson:"status,omitempty" json:"status,omitempty"`
+	AccountType string             `bson:"accounttype,omitempty" json:"accounttype,omitempty"`
+	Name        string             `validate:"required" bson:"name,omitempty" json:"name,omitempty"`
+	Public      string             `valid:"required,min=56,max=56" bson:"public" json:"public,omitempty"`
+	Secret      string             `valid:"required,min=56,max=56" bson:"secret" json:"secret,omitempty"`
 }
 
 type AccountTypeId int
