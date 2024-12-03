@@ -8,18 +8,19 @@ import (
 
 // Transaction model
 type Transaction struct {
-	ID                primitive.ObjectID `bson:"_id,omitempty" json:"id"`
-	Created           time.Time          `bson:"created,omitempty" json:"created"`
-	Modified          time.Time          `bson:"modified,omitempty" json:"modified"`
-	Status            string             `bson:"status,omitempty" json:"status"`
-	TransactionStatus string             `bson:"transactionstatus,omitempty" json:"transactionstatus"`
-	TransactionType   string             `bson:"transactiontype,omitempty" json:"transactiontype"`
-	SourceAccount     Account            `bson:"sourceaccount,omitempty" json:"sourceaccount"`
-	SignerAccounts    []Account          `bson:"signeraccounts,omitempty" json:"signeraccounts,omitempty"`
-	Maxtime           string             `bson:"maxtime,omitempty" json:"maxtime"`
-	Envelope          string             `bson:"envelope,omitempty" json:"envelope"`
-	TransactionWeight int                `bson:"transactionweight,omitempty" json:"transactionweight"`
-	CurrentWeight     int                `bson:"currentweight,omitempty" json:"currentweight"`
+	ID                     primitive.ObjectID `bson:"_id,omitempty" json:"id"`
+	Created                time.Time          `bson:"created,omitempty" json:"created"`
+	Modified               time.Time          `bson:"modified,omitempty" json:"modified"`
+	Status                 string             `bson:"status,omitempty" json:"status"`
+	TransactionStatus      string             `bson:"transactionstatus,omitempty" json:"transactionstatus"`
+	TransactionType        string             `bson:"transactiontype,omitempty" json:"transactiontype"`
+	SourceAccount          Account            `bson:"sourceaccount,omitempty" json:"sourceaccount"`
+	SignerAccounts         []Account          `bson:"signeraccounts,omitempty" json:"signeraccounts,omitempty"`
+	PossibleSignerAccounts []Account          `bson:"possiblesigneraccounts,omitempty" json:"possiblesigneraccounts,omitempty"`
+	Maxtime                string             `bson:"maxtime,omitempty" json:"maxtime"`
+	Envelope               string             `bson:"envelope,omitempty" json:"envelope"`
+	TransactionWeight      int                `bson:"transactionweight,omitempty" json:"transactionweight"`
+	CurrentWeight          int                `bson:"currentweight,omitempty" json:"currentweight"`
 }
 
 type TransactionTypeId int
