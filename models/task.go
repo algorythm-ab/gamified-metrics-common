@@ -14,8 +14,10 @@ type Task struct {
 	Created   time.Time          `bson:"created,omitempty" json:"created,omitempty"`
 	Modified  time.Time          `bson:"modified,omitempty" json:"modified,omitempty"`
 	Deadline  time.Time          `bson:"deadline,omitempty" json:"deadline,omitempty"`
+	Done      time.Time          `bson:"done,omitempty" json:"done,omitempty"`
 	Status    string             `bson:"status,omitempty" json:"status,omitempty"`
 	Artifacts *[]Artifact        `bson:"artifacts,omitempty" json:"artifacts,omitempty"`
+	Items     *[]Item            `bson:"items,omitempty" json:"items,omitempty"`
 	Payment   string             `bson:"payment,omitempty" json:"payment,omitempty"`
 	Name      string             `validate:"required" bson:"name,omitempty" json:"name,omitempty"`
 	Amount    int                `bson:"amount,omitempty" json:"amount,omitempty"`

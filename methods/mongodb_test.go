@@ -4,7 +4,9 @@ import (
 	"reflect"
 	"testing"
 
+	"github.com/xorcare/pointer"
 	"go.mongodb.org/mongo-driver/bson"
+	"go.mongodb.org/mongo-driver/bson/primitive"
 	"go.mongodb.org/mongo-driver/mongo/options"
 )
 
@@ -44,9 +46,6 @@ func TestNewMongoPaginate(t *testing.T) {
 }
 
 func TestMongoPaginate_GetPaginatedOpts(t *testing.T) {
-	page := 1
-	limit := 1
-	mpa := NewMongoPaginate(page, limit)
 	tests := []struct {
 		name string
 		mp   *MongoPaginate
@@ -54,12 +53,18 @@ func TestMongoPaginate_GetPaginatedOpts(t *testing.T) {
 	}{
 		{
 			name: "should return a pointer to FindOptions",
-			//mp:   NewMongoPaginate(page, limit),
-			mp: mpa,
-			//mp:   &MongoPaginate{page: page, limit: limit},
-			//mp:   &MongoPaginate{1, 1},
-			//want: &options.FindOptions{Limit: &page, Skip: &limit},
-			want: &options.FindOptions{Limit: &mpa.limit, Skip: &mpa.page},
+			mp:   NewMongoPaginate(1, 5),
+			want: &options.FindOptions{Limit: pointer.Int64(5), Skip: pointer.Int64(0)},
+		},
+		{
+			name: "should return a pointer to FindOptions",
+			mp:   NewMongoPaginate(2, 100),
+			want: &options.FindOptions{Limit: pointer.Int64(100), Skip: pointer.Int64(100)},
+		},
+		{
+			name: "should return a pointer to FindOptions",
+			mp:   NewMongoPaginate(3, 100),
+			want: &options.FindOptions{Limit: pointer.Int64(100), Skip: pointer.Int64(200)},
 		},
 	}
 	for _, tt := range tests {
@@ -76,6 +81,7 @@ func TestToBSON_M(t *testing.T) {
 		fields string
 		values string
 	}
+	id, _ := primitive.ObjectIDFromHex("6761cfcd9c1bd43576849ac4")
 	tests := []struct {
 		name string
 		args args
@@ -85,6 +91,11 @@ func TestToBSON_M(t *testing.T) {
 			name: "a",
 			args: args{"Test", "1"},
 			want: bson.M{"Test": "1"},
+		},
+		{
+			name: "b",
+			args: args{"_id", "6761cfcd9c1bd43576849ac4"},
+			want: bson.M{"_id": id},
 		},
 	}
 	for _, tt := range tests {

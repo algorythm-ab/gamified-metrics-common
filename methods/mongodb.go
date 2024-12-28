@@ -24,7 +24,6 @@ func (mp *MongoPaginate) GetPaginatedOpts() *options.FindOptions {
 	l := mp.limit
 	skip := mp.page*mp.limit - mp.limit
 	fOpt := options.FindOptions{Limit: &l, Skip: &skip}
-	//fOpt := options.FindOptions{Limit: &mp.limit, Skip: &skip}
 
 	return &fOpt
 }

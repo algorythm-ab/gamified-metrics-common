@@ -34,16 +34,8 @@ type Links struct {
 	Last  string `json:"last"`
 }
 
-/*
-func (app *application) clientError(w http.ResponseWriter, status int) {
-	http.Error(w, http.StatusText(status), status)
-}
-*/
-
 // RespondWithError - creating JSON response with error
 func RespondWithError(w http.ResponseWriter, code int, err error) {
-	//trace := fmt.Sprintf("%s\n%s", err.Error(), debug.Stack())
-	//app.errorLog.Output(2, trace)
 	RespondWithJSON(w, code, map[string]string{"error": err.Error()})
 }
 

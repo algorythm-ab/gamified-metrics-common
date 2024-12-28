@@ -43,6 +43,5 @@ func CreateLogger(level string) *zap.Logger {
 			"stderr",
 		},
 	}
-
 	return zap.Must(config.Build())
 }
