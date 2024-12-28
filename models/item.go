@@ -8,18 +8,20 @@ import (
 
 // Item model
 type Item struct {
-	ID           primitive.ObjectID `bson:"_id,omitempty" json:"id"`
-	Created      time.Time          `bson:"created,omitempty" json:"created,omitempty"`
-	Modified     time.Time          `bson:"modified,omitempty" json:"modified,omitempty"`
-	Status       string             `bson:"status,omitempty" json:"status,omitempty"`
-	SerialNumber string             `bson:"serialnumber,omitempty" json:"serialnumber,omitempty"`
-	PhysicalType string             `bson:"physicaltype,omitempty" json:"physicaltype,omitempty"`
-	ItemType     string             `bson:"itemtype,omitempty" json:"itemtype,omitempty"`
-	Actions      []Action           `bson:"actions,omitempty" json:"actions,omitempty"`
-	Network      string             `bson:"network,omitempty" json:"network,omitempty"`
-	Name         string             `validate:"required" bson:"name,omitempty" json:"name"`
-	Location     string             `bson:"location,omitempty" json:"location,omitempty"`
-	Note         string             `bson:"note,omitempty" json:"note,omitempty"`
+	ID primitive.ObjectID `bson:"_id,omitempty" json:"id"`
+	//Owner_Id     primitive.ObjectID `bson:"owner_id,omitempty" json:"owner_id,omitempty"`
+	Created      time.Time `bson:"created,omitempty" json:"created,omitempty"`
+	Modified     time.Time `bson:"modified,omitempty" json:"modified,omitempty"`
+	Status       string    `bson:"status,omitempty" json:"status,omitempty"`
+	Owner        User      `bson:"owner,omitempty" json:"owner,omitempty"`
+	SerialNumber string    `bson:"serialnumber,omitempty" json:"serialnumber,omitempty"`
+	PhysicalType string    `bson:"physicaltype,omitempty" json:"physicaltype,omitempty"`
+	ItemType     string    `bson:"itemtype,omitempty" json:"itemtype,omitempty"`
+	Actions      []Action  `bson:"actions,omitempty" json:"actions,omitempty"`
+	Network      string    `bson:"network,omitempty" json:"network,omitempty"`
+	Name         string    `validate:"required" bson:"name,omitempty" json:"name"`
+	Location     string    `bson:"location,omitempty" json:"location,omitempty"`
+	Note         string    `bson:"note,omitempty" json:"note,omitempty"`
 }
 
 // PhysicalType

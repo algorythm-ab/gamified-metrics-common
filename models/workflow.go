@@ -14,6 +14,7 @@ type Workflow struct {
 	TemplateWorkflow_Id primitive.ObjectID `bson:"templateworkflow_id,omitempty" json:"templateworkflow_id,omitempty"`
 	Created             time.Time          `bson:"created,omitempty" json:"created,omitempty"`
 	Modified            time.Time          `bson:"modified,omitempty" json:"modified,omitempty"`
+	Done                time.Time          `bson:"done,omitempty" json:"done,omitempty"`
 	Status              string             `bson:"status,omitempty" json:"status,omitempty"`
 	Tasks               *[]Task            `bson:"tasks,omitempty" json:"tasks,omitempty"`
 	Name                string             `validate:"required" bson:"name,omitempty" json:"name,omitempty"`
