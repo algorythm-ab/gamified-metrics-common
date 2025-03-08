@@ -24,7 +24,7 @@ type SetTrustObject struct {
 type SetOptionsObject struct {
 	StatusObject
 	MainAccount   Account          `json:"mainaccount"`
-	SignerAccount Account          `json:"signeraccount,omitempty"`
+	SignerAccount Account          `json:"signeraccount,omitzero"`
 	Thresholds    *ThresholdObject `json:"thresholds,omitempty"`
 	Weight        int              `json:"weight,omitempty"`
 }
@@ -47,8 +47,8 @@ type PaymentObject struct {
 // SignObject - used to handle json input
 type SignObject struct {
 	StatusObject
-	Transaction   Transaction `json:"transaction,omitempty"`
-	SignerAccount Account     `json:"signeraccount,omitempty"`
+	Transaction   Transaction `json:"transaction,omitzero"`
+	SignerAccount Account     `json:"signeraccount,omitzero"`
 }
 
 // TransObject - used to handle json input

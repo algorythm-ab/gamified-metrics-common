@@ -8,26 +8,27 @@ import (
 
 // Action model
 type Action struct {
-	ID primitive.ObjectID `bson:"_id,omitempty" json:"id"`
-	//Owner_Id   primitive.ObjectID `bson:"owner_id,omitempty" json:"owner_id,omitempty"`
-	//User_Id    primitive.ObjectID `bson:"user_id,omitempty" json:"user_id,omitempty"`
-	Created    time.Time `bson:"created,omitempty" json:"created,omitempty"`
-	Modified   time.Time `bson:"modified,omitempty" json:"modified,omitempty"`
-	Deadline   time.Time `bson:"deadline,omitempty" json:"deadline,omitempty"`
-	Done       time.Time `bson:"done,omitempty" json:"done,omitempty"`
-	Owner      User      `bson:"owner,omitempty" json:"owner,omitempty"`
-	User       User      `bson:"user,omitempty" json:"user,omitempty"`
-	Asset      Asset     `bson:"asset,omitempty" json:"asset,omitempty"`
-	Status     string    `bson:"status,omitempty" json:"status,omitempty"`
-	ActionType string    `bson:"actiontype,omitempty" json:"actiontype,omitempty"`
-	Amount     int       `bson:"amount,omitempty" json:"amount,omitempty"`
-	Name       string    `validate:"required" bson:"name,omitempty" json:"name,omitempty"`
+	ID         primitive.ObjectID `bson:"_id,omitempty" json:"id"`
+	Created    time.Time          `bson:"created,omitempty" json:"created,omitzero"`
+	Modified   time.Time          `bson:"modified,omitempty" json:"modified,omitzero"`
+	Deadline   time.Time          `bson:"deadline,omitempty" json:"deadline,omitzero"`
+	Done       time.Time          `bson:"done,omitempty" json:"done,omitzero"`
+	Owner      User               `bson:"owner,omitempty" json:"owner,omitzero"`
+	User       User               `bson:"user,omitempty" json:"user,omitzero"`
+	Asset      Asset              `bson:"asset,omitempty" json:"asset,omitzero"`
+	Status     string             `bson:"status,omitempty" json:"status,omitempty"`
+	Logic      string             `bson:"logic,omitempty" json:"logic,omitempty"`
+	Repeat     bool               `bson:"repeat,omitempty" json:"repeat,omitempty"`
+	ActionType string             `bson:"actiontype,omitempty" json:"actiontype,omitempty"`
+	Amount     int                `bson:"amount,omitempty" json:"amount,omitempty"`
+	Name       string             `validate:"required" bson:"name,omitempty" json:"name,omitempty"`
 }
 
 type ActionTypeId int
 
 const (
 	ActionPayment ActionTypeId = iota
+	ActionSign
 	ActionMessage
 	ActionEmail
 )
@@ -40,6 +41,7 @@ type ActionType struct {
 
 var ActionTypes = []ActionType{
 	{ActionPayment, "payment", "payment"},
+	{ActionSign, "sign", "sign"},
 	{ActionMessage, "message", "message"},
 	{ActionEmail, "email", "email"},
 }

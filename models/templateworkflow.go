@@ -10,8 +10,8 @@ import (
 type TemplateWorkflow struct {
 	ID            primitive.ObjectID `bson:"_id,omitempty" json:"id"`
 	Owner_Id      primitive.ObjectID `bson:"owner_id,omitempty" json:"owner_id,omitempty"`
-	Created       time.Time          `bson:"created,omitempty" json:"created,omitempty"`
-	Modified      time.Time          `bson:"modified,omitempty" json:"modified,omitempty"`
+	Created       time.Time          `bson:"created,omitempty" json:"created,omitzero"`
+	Modified      time.Time          `bson:"modified,omitempty" json:"modified,omitzero"`
 	Status        string             `bson:"status,omitempty" json:"status,omitempty"`
 	Version       string             `bson:"version,omitempty" json:"version,omitempty"`
 	TemplateTasks *[]TemplateTask    `bson:"templatetasks,omitempty" json:"templatetasks,omitempty"`

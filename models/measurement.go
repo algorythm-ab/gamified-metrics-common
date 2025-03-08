@@ -9,15 +9,15 @@ import (
 // Measurement model
 type Measurement struct {
 	ID        primitive.ObjectID `bson:"_id,omitempty" json:"id,omitempty"`
-	Created   time.Time          `bson:"created,omitempty" json:"created,omitempty"`
-	Modified  time.Time          `bson:"modified,omitempty" json:"modified,omitempty"`
+	Created   time.Time          `bson:"created,omitempty" json:"created,omitzero"`
+	Modified  time.Time          `bson:"modified,omitempty" json:"modified,omitzero"`
 	Status    string             `bson:"status,omitempty" json:"status,omitempty"`
-	Owner     User               `bson:"owner,omitempty" json:"owner,omitempty"`
-	Asset     Asset              `bson:"asset,omitempty" json:"asset,omitempty"`
+	Owner     User               `bson:"owner,omitempty" json:"owner,omitzero"`
+	Asset     Asset              `bson:"asset,omitempty" json:"asset,omitzero"`
 	Amount    int                `bson:"amount,omitempty" json:"amount,omitempty"`
 	Interval  string             `validate:"required" bson:"interval,omitempty" json:"interval,omitempty"`
-	StartDate time.Time          `bson:"startdate,omitempty" json:"startdate,omitempty"`
-	EndDate   time.Time          `bson:"enddate,omitempty" json:"enddate,omitempty"`
+	StartDate time.Time          `bson:"startdate,omitempty" json:"startdate,omitzero"`
+	EndDate   time.Time          `bson:"enddate,omitempty" json:"enddate,omitzero"`
 	MeasurementType
 	Executions  []Execution  `bson:"executions,omitempty" json:"executions,omitempty"`
 	Identifiers []Identifier `bson:"identifiers" json:"identifiers"`
