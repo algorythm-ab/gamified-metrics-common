@@ -16,7 +16,7 @@ type Item struct {
 	SerialNumber string             `bson:"serialnumber,omitempty" json:"serialnumber,omitempty"`
 	PhysicalType string             `bson:"physicaltype,omitempty" json:"physicaltype,omitempty"`
 	ItemType     string             `bson:"itemtype,omitempty" json:"itemtype,omitempty"`
-	Actions      []Action           `bson:"actions,omitempty" json:"actions,omitempty"`
+	Actions      *[]Action          `bson:"actions,omitempty" json:"actions,omitempty"`
 	Network      string             `bson:"network,omitempty" json:"network,omitempty"`
 	Repeat       bool               `bson:"repeat,omitempty" json:"repeat,omitempty"`
 	Name         string             `validate:"required" bson:"name,omitempty" json:"name"`
@@ -61,8 +61,7 @@ func (c PhysicalTypeId) GetPhysicalType() string {
 type ItemTypeId int
 
 const (
-	ItemTask ItemTypeId = iota
-	ItemAction
+	ItemItem ItemTypeId = iota
 	ItemNFC
 	ItemOther
 )
@@ -74,8 +73,7 @@ type ItemType struct {
 }
 
 var ItemTypes = []ItemType{
-	{ItemTask, "task", "task"},
-	{ItemAction, "action", "action"},
+	{ItemItem, "item", "item"},
 	{ItemNFC, "nfc", "nfc"},
 	{ItemOther, "other", "other"},
 }

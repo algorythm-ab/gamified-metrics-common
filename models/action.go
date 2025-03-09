@@ -31,6 +31,7 @@ const (
 	ActionSign
 	ActionMessage
 	ActionEmail
+	ActionCollection
 )
 
 type ActionType struct {
@@ -44,6 +45,7 @@ var ActionTypes = []ActionType{
 	{ActionSign, "sign", "sign"},
 	{ActionMessage, "message", "message"},
 	{ActionEmail, "email", "email"},
+	{ActionCollection, "collection", "collection"},
 }
 
 func (e *ActionType) GetActionType() string {
