@@ -6,12 +6,6 @@ import (
 	"go.mongodb.org/mongo-driver/bson/primitive"
 )
 
-type StatusObject struct {
-	Description string `json:"description,omitempty"`
-	Success     bool   `json:"success,omitempty"`
-	Error       string `json:"error,omitempty"`
-}
-
 // SetTrustObject - used to handle json input
 type SetTrustObject struct {
 	StatusObject

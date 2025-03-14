@@ -6,37 +6,21 @@ import (
 	"net/http"
 	"strconv"
 	"strings"
+
+	"github.com/algorythm-ab/gamified-metrics-common/models"
 )
-
-// ReturnObject - Model for ReturnObject
-type ReturnObject struct {
-	Records any
-	Count   Count
-	Links   Links
-}
-
-// Count - Model for Count
-type Count struct {
-	Total           int    `json:"total"`
-	Page            int    `json:"page"`
-	Limit           int    `json:"limit"`
-	SelfPagingToken string `json:"selfpagingtoken"`
-	PrevPagingToken string `json:"prevpagingtoken"`
-	NextPagingToken string `json:"nextpagingtoken"`
-}
-
-// Links - Model for Links
-type Links struct {
-	Self  string `json:"self"`
-	First string `json:"first"`
-	Prev  string `json:"prev"`
-	Next  string `json:"next"`
-	Last  string `json:"last"`
-}
 
 // RespondWithError - creating JSON response with error
 func RespondWithError(w http.ResponseWriter, code int, err error) {
-	RespondWithJSON(w, code, map[string]string{"error": err.Error()})
+	var status models.StatusObject
+	status.Description = err.Error()
+	status.Success = false
+	status.Error = err.Error()
+
+	var returner models.ReturnObject
+	returner.Status = status
+
+	RespondWithJSON(w, code, returner)
 }
 
 // RespondWithJSON - creating JSON response
@@ -49,8 +33,8 @@ func RespondWithJSON(w http.ResponseWriter, code int, payload interface{}) {
 }
 
 // CreateLinks - Creating links for return object
-func CreateLinks(r *http.Request, count Count) Links {
-	out := Links{}
+func CreateLinks(r *http.Request, count models.Count) models.Links {
+	out := models.Links{}
 
 	page := count.Page
 	limit := count.Limit

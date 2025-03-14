@@ -6,6 +6,7 @@ import (
 	"reflect"
 	"testing"
 
+	"github.com/algorythm-ab/gamified-metrics-common/models"
 	"github.com/pkg/errors"
 )
 
@@ -56,37 +57,37 @@ func TestRespondWithJSON(t *testing.T) {
 func TestCreateLinks(t *testing.T) {
 	type args struct {
 		r     *http.Request
-		count Count
+		count models.Count
 	}
 	tests := []struct {
 		name string
 		args args
-		want Links
+		want models.Links
 	}{
 		{
 			name: "test case 1",
-			args: args{httptest.NewRequest(http.MethodGet, "/url?page=1", nil), Count{Total: 100, Page: 1, Limit: 1, SelfPagingToken: "a", PrevPagingToken: "b", NextPagingToken: "c"}},
-			want: Links{"/url?page=1", "/url?page=1", "/url?page=1", "/url?page=2", "/url?page=100"},
+			args: args{httptest.NewRequest(http.MethodGet, "/url?page=1", nil), models.Count{Total: 100, Page: 1, Limit: 1}},
+			want: models.Links{"/url?page=1", "/url?page=1", "/url?page=1", "/url?page=2", "/url?page=100"},
 		},
 		{
 			name: "test case 2",
-			args: args{httptest.NewRequest(http.MethodGet, "/url?page=1", nil), Count{Total: 100, Page: 1, Limit: 10, SelfPagingToken: "a", PrevPagingToken: "b", NextPagingToken: "c"}},
-			want: Links{"/url?page=1", "/url?page=1", "/url?page=1", "/url?page=2", "/url?page=10"},
+			args: args{httptest.NewRequest(http.MethodGet, "/url?page=1", nil), models.Count{Total: 100, Page: 1, Limit: 10}},
+			want: models.Links{"/url?page=1", "/url?page=1", "/url?page=1", "/url?page=2", "/url?page=10"},
 		},
 		{
 			name: "test case 3",
-			args: args{httptest.NewRequest(http.MethodGet, "/url?page=2&limit=10", nil), Count{Total: 100, Page: 2, Limit: 10, SelfPagingToken: "a", PrevPagingToken: "b", NextPagingToken: "c"}},
-			want: Links{"/url?page=2&limit=10", "/url?page=1&limit=10", "/url?page=1&limit=10", "/url?page=3&limit=10", "/url?page=10&limit=10"},
+			args: args{httptest.NewRequest(http.MethodGet, "/url?page=2&limit=10", nil), models.Count{Total: 100, Page: 2, Limit: 10}},
+			want: models.Links{"/url?page=2&limit=10", "/url?page=1&limit=10", "/url?page=1&limit=10", "/url?page=3&limit=10", "/url?page=10&limit=10"},
 		},
 		{
 			name: "test case 4",
-			args: args{httptest.NewRequest(http.MethodGet, "/url?page=3&limit=10", nil), Count{Total: 100, Page: 3, Limit: 10, SelfPagingToken: "a", PrevPagingToken: "b", NextPagingToken: "c"}},
-			want: Links{"/url?page=3&limit=10", "/url?page=1&limit=10", "/url?page=2&limit=10", "/url?page=4&limit=10", "/url?page=10&limit=10"},
+			args: args{httptest.NewRequest(http.MethodGet, "/url?page=3&limit=10", nil), models.Count{Total: 100, Page: 3, Limit: 10}},
+			want: models.Links{"/url?page=3&limit=10", "/url?page=1&limit=10", "/url?page=2&limit=10", "/url?page=4&limit=10", "/url?page=10&limit=10"},
 		},
 		{
 			name: "test case 5",
-			args: args{httptest.NewRequest(http.MethodGet, "/url?page=10&limit=10", nil), Count{Total: 100, Page: 10, Limit: 10, SelfPagingToken: "a", PrevPagingToken: "b", NextPagingToken: "c"}},
-			want: Links{"/url?page=10&limit=10", "/url?page=1&limit=10", "/url?page=9&limit=10", "/url?page=10&limit=10", "/url?page=10&limit=10"},
+			args: args{httptest.NewRequest(http.MethodGet, "/url?page=10&limit=10", nil), models.Count{Total: 100, Page: 10, Limit: 10}},
+			want: models.Links{"/url?page=10&limit=10", "/url?page=1&limit=10", "/url?page=9&limit=10", "/url?page=10&limit=10", "/url?page=10&limit=10"},
 		},
 	}
 	for _, tt := range tests {
