@@ -60,3 +60,16 @@ func CreateLinks(r *http.Request, count models.Count) models.Links {
 
 	return out
 }
+
+// VersionNotFound - Return version not found
+func VersionNotFound(w http.ResponseWriter, _ *http.Request) {
+	var status models.StatusObject
+	status.Description = "api version not found"
+	status.Success = false
+	status.Error = "api version not found"
+
+	var returner models.ReturnObject
+	returner.Status = status
+
+	RespondWithJSON(w, http.StatusOK, returner)
+}

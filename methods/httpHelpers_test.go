@@ -67,27 +67,27 @@ func TestCreateLinks(t *testing.T) {
 		{
 			name: "test case 1",
 			args: args{httptest.NewRequest(http.MethodGet, "/url?page=1", nil), models.Count{Total: 100, Page: 1, Limit: 1}},
-			want: models.Links{"/url?page=1", "/url?page=1", "/url?page=1", "/url?page=2", "/url?page=100"},
+			want: models.Links{Self: "/url?page=1", First: "/url?page=1", Prev: "/url?page=1", Next: "/url?page=2", Last: "/url?page=100"},
 		},
 		{
 			name: "test case 2",
 			args: args{httptest.NewRequest(http.MethodGet, "/url?page=1", nil), models.Count{Total: 100, Page: 1, Limit: 10}},
-			want: models.Links{"/url?page=1", "/url?page=1", "/url?page=1", "/url?page=2", "/url?page=10"},
+			want: models.Links{Self: "/url?page=1", First: "/url?page=1", Prev: "/url?page=1", Next: "/url?page=2", Last: "/url?page=10"},
 		},
 		{
 			name: "test case 3",
 			args: args{httptest.NewRequest(http.MethodGet, "/url?page=2&limit=10", nil), models.Count{Total: 100, Page: 2, Limit: 10}},
-			want: models.Links{"/url?page=2&limit=10", "/url?page=1&limit=10", "/url?page=1&limit=10", "/url?page=3&limit=10", "/url?page=10&limit=10"},
+			want: models.Links{Self: "/url?page=2&limit=10", First: "/url?page=1&limit=10", Prev: "/url?page=1&limit=10", Next: "/url?page=3&limit=10", Last: "/url?page=10&limit=10"},
 		},
 		{
 			name: "test case 4",
 			args: args{httptest.NewRequest(http.MethodGet, "/url?page=3&limit=10", nil), models.Count{Total: 100, Page: 3, Limit: 10}},
-			want: models.Links{"/url?page=3&limit=10", "/url?page=1&limit=10", "/url?page=2&limit=10", "/url?page=4&limit=10", "/url?page=10&limit=10"},
+			want: models.Links{Self: "/url?page=3&limit=10", First: "/url?page=1&limit=10", Prev: "/url?page=2&limit=10", Next: "/url?page=4&limit=10", Last: "/url?page=10&limit=10"},
 		},
 		{
 			name: "test case 5",
 			args: args{httptest.NewRequest(http.MethodGet, "/url?page=10&limit=10", nil), models.Count{Total: 100, Page: 10, Limit: 10}},
-			want: models.Links{"/url?page=10&limit=10", "/url?page=1&limit=10", "/url?page=9&limit=10", "/url?page=10&limit=10", "/url?page=10&limit=10"},
+			want: models.Links{Self: "/url?page=10&limit=10", First: "/url?page=1&limit=10", Prev: "/url?page=9&limit=10", Next: "/url?page=10&limit=10", Last: "/url?page=10&limit=10"},
 		},
 	}
 	for _, tt := range tests {
