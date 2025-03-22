@@ -7,9 +7,9 @@ type Count struct {
 	Limit int `json:"limit"`
 	//CurrentPage int `json:"currentpage"`
 	//PageSize    int `json:"pagesize"`
-	//SelfPagingToken string `json:"selfpagingtoken"`
-	//PrevPagingToken string `json:"prevpagingtoken"`
-	//NextPagingToken string `json:"nextpagingtoken"`
+	SelfPagingToken string `json:"selfpagingtoken"`
+	PrevPagingToken string `json:"prevpagingtoken"`
+	NextPagingToken string `json:"nextpagingtoken"`
 }
 
 // Links - Model for Links
