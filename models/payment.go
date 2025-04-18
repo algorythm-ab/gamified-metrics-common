@@ -8,7 +8,6 @@ import (
 
 // SetTrustObject - used to handle json input
 type SetTrustObject struct {
-	StatusObject
 	Account Account `json:"account"`
 	Asset   Asset   `json:"asset"`
 	Limit   string  `json:"limit,omitempty"`
@@ -16,7 +15,6 @@ type SetTrustObject struct {
 
 // SetOptionsObject - used to handle json input
 type SetOptionsObject struct {
-	StatusObject
 	MainAccount   Account          `json:"mainaccount"`
 	SignerAccount Account          `json:"signeraccount,omitzero"`
 	Thresholds    *ThresholdObject `json:"thresholds,omitempty"`
@@ -31,7 +29,6 @@ type ThresholdObject struct {
 
 // PaymentObject - used to handle json input
 type PaymentObject struct {
-	StatusObject
 	FromAccount Account `json:"fromaccount"`
 	ToAccount   Account `json:"toaccount"`
 	Asset       Asset   `json:"asset"`
@@ -40,7 +37,6 @@ type PaymentObject struct {
 
 // SignObject - used to handle json input
 type SignObject struct {
-	StatusObject
 	Transaction   Transaction `json:"transaction,omitzero"`
 	SignerAccount Account     `json:"signeraccount,omitzero"`
 }
@@ -60,7 +56,6 @@ type TransObject struct {
 
 // OfferObject - used to handle json input
 type OfferObject struct {
-	StatusObject
 	Seller  Account `json:"seller"`
 	Selling Asset   `json:"selling"`
 	Buying  Asset   `json:"buying"`

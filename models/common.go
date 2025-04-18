@@ -32,6 +32,7 @@ type StatusObject struct {
 type ReturnObject struct {
 	Records any          `json:"records,omitempty"`
 	Record  any          `json:"record,omitempty"`
+	Type    string       `json:"type,omitempty"`
 	Count   Count        `json:"count,omitzero"`
 	Links   Links        `json:"links,omitzero"`
 	Status  StatusObject `json:"status,omitempty"`
