@@ -23,6 +23,14 @@ func RespondWithError(w http.ResponseWriter, code int, err error) {
 	RespondWithJSON(w, code, returner)
 }
 
+// RespondWithMessage - creating JSON response message, use status object
+func RespondWithMessage(w http.ResponseWriter, code int, status models.StatusObject) {
+	var returner models.ReturnObject
+	returner.Status = status
+
+	RespondWithJSON(w, code, returner)
+}
+
 // RespondWithJSON - creating JSON response
 func RespondWithJSON(w http.ResponseWriter, code int, payload interface{}) {
 	response, _ := json.MarshalIndent(payload, "", "  ")
